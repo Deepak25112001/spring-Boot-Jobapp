@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Student {
     private String name;
-    private String qualification;
     private String email;
     private String phone;
-    private String address;
+    private String qualification;
 }
