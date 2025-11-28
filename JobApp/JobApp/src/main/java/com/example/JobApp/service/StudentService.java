@@ -2,37 +2,23 @@ package com.example.JobApp.service;
 
 import com.example.JobApp.model.Student;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.css.Counter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class StudentService {
 
-    private List<Student> studentList = new ArrayList<>();
-
+    private Map<Integer, Student> studentMap = new HashMap<>();
+     private  int idCounter = 1;
     public String addStudent(Student student) {
+        studentMap.put(idCounter, student);
+        idCounter++;
 
-        if (student.getName() == null || student.getName().isEmpty()) {
-            return "Student name is required!";
-        }
-
-        if (student.getEmail() == null || student.getEmail().isEmpty()) {
-            return "Email is required!";
-        }
-
-        if (student.getPhone() == null || student.getPhone().isEmpty()) {
-            return "Phone number is required!";
-        }
-
-        studentList.add(student);
-
-        return "Student details saved for: " + student.getName();
+        return "Student details saved for:" + student.getName();
     }
-
-
-    public List<Student> getAllStudents() {
-        return studentList;
+    public Map<Integer, Student> getAllStudents(){
+    return studentMap;
     }
 }
-
